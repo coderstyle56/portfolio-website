@@ -5,21 +5,51 @@ import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const ProjectCard = ({ title, summary, techStack, description }) => {
-  const [showDetails, setShowDetails] = useState(false); 
+// const ProjectCard = ({ title, summary, techStack, description }) => {
+//   const [showDetails, setShowDetails] = useState(false);
+//   return (
+//     <div className="bg-gray-800 p-5 rounded-lg shadow-lg flex flex-col h-full">
+//       <h4 className="text-xl font-bold">{title}</h4>
+
+//       {/* Summary Section */}
+//       <p className="text-gray-300 mt-2">{summary}</p>
+
+//       {/* Tech Stack Section */}
+//       <p className="text-gray-400">Tech Stack: {techStack}</p>
+
+//       {showDetails && <p className="text-gray-300 mt-2">{description}</p>}
+
+//       {/* Button and Link Wrapper */}
+//       <div className="mt-auto flex justify-between items-center">
+//         <button
+//           onClick={() => setShowDetails(!showDetails)}
+//           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 cursor-pointer"
+//         >
+//           {showDetails ? "Read Less" : "Read More"}
+//         </button>
+
+//         <a href="#" className="text-blue-400">
+//           GitHub Repository
+//         </a>
+//       </div>
+//     </div>
+//   );
+// };
+const ProjectCard = ({
+  title,
+  summary,
+  techStack,
+  description,
+  githubLink,
+}) => {
+  const [showDetails, setShowDetails] = useState(false);
   return (
     <div className="bg-gray-800 p-5 rounded-lg shadow-lg flex flex-col h-full">
       <h4 className="text-xl font-bold">{title}</h4>
-
-      {/* Summary Section */}
       <p className="text-gray-300 mt-2">{summary}</p>
-
-      {/* Tech Stack Section */}
       <p className="text-gray-400">Tech Stack: {techStack}</p>
-
       {showDetails && <p className="text-gray-300 mt-2">{description}</p>}
 
-      {/* Button and Link Wrapper */}
       <div className="mt-auto flex justify-between items-center">
         <button
           onClick={() => setShowDetails(!showDetails)}
@@ -28,7 +58,12 @@ const ProjectCard = ({ title, summary, techStack, description }) => {
           {showDetails ? "Read Less" : "Read More"}
         </button>
 
-        <a href="#" className="text-blue-400">
+        <a
+          href={githubLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400"
+        >
           GitHub Repository
         </a>
       </div>
@@ -37,7 +72,7 @@ const ProjectCard = ({ title, summary, techStack, description }) => {
 };
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans">
       {/* Navbar */}
@@ -159,10 +194,19 @@ export default function Home() {
         <h3 className="text-4xl font-bold text-center mb-10">Projects</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           <ProjectCard
+            title="CollegeTips Gallery Section"
+            summary="An interactive and visually engaging gallery for the CollegeTips website."
+            techStack="Next.js, React.js, JavaScript, Framer Motion"
+            description="Developed a dynamic, responsive gallery section as part of my first assignment for CollegeTips. It highlights core company themes like Fun, Hustle, and Team Vibes using animated transitions and modern UI design. This component significantly improved visual storytelling and user engagement on the platform."
+            githubLink="https://github.com/coderstyle56/CollegeTips-Gallery"
+          />
+
+          <ProjectCard
             title="Ecommerce Microservices"
             summary="A scalable e-commerce system with JWT authentication and RabbitMQ messaging."
             techStack="Node.js, Express.js, MongoDB, RabbitMQ, JWT, bcrypt.js"
             description="Developed a scalable e-commerce system with secure authentication (JWT, bcrypt.js) and asynchronous messaging (RabbitMQ). Optimized API performance by 40%."
+            githubLink="https://github.com/coderstyle56/ecommerce-microservices"
           />
 
           <ProjectCard
@@ -170,6 +214,7 @@ export default function Home() {
             summary="A real-time dashboard with interactive charts for transaction monitoring."
             techStack="React.js, Node.js, Express.js"
             description="Built a real-time transaction monitoring dashboard with interactive charts and fast API responses. Improved frontend performance by 30%."
+            githubLink="https://github.com/coderstyle56/Transaction-dashboard"
           />
 
           <ProjectCard
@@ -177,6 +222,7 @@ export default function Home() {
             summary="A responsive salon booking platform with an optimized user experience."
             techStack="Next.js, React.js, JavaScript"
             description="Created a responsive salon booking platform with seamless UI/UX and optimized API calls, improving booking efficiency by 35%."
+            githubLink="https://github.com/coderstyle56/Barberz-salon"
           />
         </div>
       </section>
